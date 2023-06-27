@@ -51,7 +51,7 @@ const Login = (props) => {
     validate
   );
 
-  const { userValue, setValues } = useContext(AuthContext);
+  const { setValues } = useContext(AuthContext);
 
   async function submit() {
     const response = await API.login(values);

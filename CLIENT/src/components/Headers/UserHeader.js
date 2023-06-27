@@ -19,7 +19,7 @@
 // reactstrap components
 import { AuthContext } from "context/AuthContext";
 import { useContext } from "react";
-import { Button, Container, Row, Col } from "reactstrap";
+import { Container, Row, Col } from "reactstrap";
 
 const UserHeader = () => {
   const {userValue} = useContext(AuthContext);
