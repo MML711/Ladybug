@@ -31,7 +31,7 @@ const App = () => {
       setAuth(false);
       setAuthLevel("");
     }, duration);
-  }, [token]);
+  }, [token, duration]);
 
   const setAuth = (boolean) => {
     setIsAuthenticated(boolean);

@@ -55,7 +55,7 @@ const useForm = (callback, initialValues, validate) => {
     if (Object.keys(errors).length === 0 && isSubmitting) {
       callback();
     }
-  }, [errors]);
+  }, [errors]); // eslint-disable-line react-hooks/exhaustive-deps
 
   return {
     handleChange,
