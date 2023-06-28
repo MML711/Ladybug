@@ -15,8 +15,11 @@ app.use(express.urlencoded({ extended: false }));
 //middleware to handle any CORS issues
 app.use(cors({
   origin: "*",
+  methods: ["POST", "GET", "PUT", "DELETE", "PATCH"],
+  allowedHeaders: ["Origin", "X-Requested-With", "Content-Type", "Accept", "Authorization", "token"],
 }));
-app.use((req, res, next) => {
+
+/* app.use((req, res, next) => {
   res.header("Access-Control-Allow-Origin", "*");
   res.header(
     "Access-Control-Allow-Headers",
@@ -27,7 +30,7 @@ app.use((req, res, next) => {
     return res.status(200).json({});
   }
   next();
-});
+}); */
 
 app.use("/api", routes);
 

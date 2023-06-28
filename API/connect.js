@@ -17,16 +17,12 @@ const devConfig = {
 };
 
 const proConfig = {
-  connectionString: process.env.DATABASE_URL, //heroku addons
+  connectionString: process.env.DATABASE_URL, // Deployment Internal Database URL
 };
 
 const pool = new Pool(
   process.env.NODE_ENV === "production" ? proConfig : devConfig
 );
-
-// const pool = new Pool(
-//   devConfig
-// );
 
 // the pool will emit an error on behalf of any idle clients
 // it contains if a backend error or network partition happens
