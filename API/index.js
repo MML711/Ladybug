@@ -19,20 +19,19 @@ app.use((req, res, next) => {
   res.header(
     "Access-Control-Allow-Headers",
     "Origin, X-Requested-With, Content-Type, Accept, Authorization, token"
-    );
-  if (req.method == "OPTIONS") {
-    res.header("Access-Control-Allow-Methods", "POST, GET, PUT, DELETE, PATCH");
-    return res.status(200).json({});
-  }
+  );
+  res.header("Access-Control-Allow-Methods", "POST, GET, PUT, DELETE, PATCH, OPTIONS");
   next();
 });
 
 //middleware to handle any CORS issues
-app.use(cors({
-  origin: "*",
-  methods: `POST,GET,PUT,DELETE,PATCH`,
-  allowedHeaders: `Origin,X-Requested-With,Content-Type,Accept,Authorization,token`,
-}));
+app.use(
+  cors({
+    origin: "*",
+    methods: `POST,GET,PUT,DELETE,PATCH,OPTIONS`,
+    allowedHeaders: `Origin,X-Requested-With,Content-Type,Accept,Authorization,token`,
+  })
+);
 
 app.use("/api", routes);
 
