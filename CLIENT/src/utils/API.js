@@ -3,7 +3,7 @@ import axios from "axios";
 const API = {
   // Gets all projects
   getProjects: function () {
-    return fetch(`${process.env.REACT_APP_SERVERURL}/api/projects`, {
+    return fetch(`${process.env.REACT_APP_SERVER_URL}/api/projects`, {
       headers: {
         token: localStorage.getItem("token"),
       },
@@ -14,7 +14,7 @@ const API = {
     let signal = null;
     if (abortController) signal = abortController.signal;
 
-    return axios.get(`${process.env.REACT_APP_SERVERURL}/api/projects/` + id, {
+    return axios.get(`${process.env.REACT_APP_SERVER_URL}/api/projects/` + id, {
       signal,
       headers: {
         token: localStorage.getItem("token"),
@@ -25,7 +25,7 @@ const API = {
     let signal = null;
     if (abortController) signal = abortController.signal;
 
-    return fetch(`${process.env.REACT_APP_SERVERURL}/api/userProjects/${projectId}`, {
+    return fetch(`${process.env.REACT_APP_SERVER_URL}/api/userProjects/${projectId}`, {
       signal,
       headers: {
         token: localStorage.getItem("token"),
@@ -36,12 +36,12 @@ const API = {
     let signal = null;
     if (abortController) signal = abortController.signal;
 
-    return fetch(`${process.env.REACT_APP_SERVERURL}/api/tickets/` + projectId, {
+    return fetch(`${process.env.REACT_APP_SERVER_URL}/api/tickets/` + projectId, {
       signal,
     }).then((res) => res.json());
   },
   createProject: function (projectData) {
-    return fetch(`${process.env.REACT_APP_SERVERURL}/api/projects`, {
+    return fetch(`${process.env.REACT_APP_SERVER_URL}/api/projects`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -51,7 +51,7 @@ const API = {
     }).then((res) => res.json());
   },
   updateProject: function (projectId, projectData) {
-    return fetch(`${process.env.REACT_APP_SERVERURL}/api/projects/${projectId}`, {
+    return fetch(`${process.env.REACT_APP_SERVER_URL}/api/projects/${projectId}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -61,7 +61,7 @@ const API = {
     });
   },
   removeUser: function (userId) {
-    return fetch(`${process.env.REACT_APP_SERVERURL}/api/users/${userId}`, {
+    return fetch(`${process.env.REACT_APP_SERVER_URL}/api/users/${userId}`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
@@ -70,13 +70,13 @@ const API = {
     });
   },
   addContact: function (id, data) {
-    return axios.put(`${process.env.REACT_APP_SERVERURL}/api/users/` + id, data);
+    return axios.put(`${process.env.REACT_APP_SERVER_URL}/api/users/` + id, data);
   },
   getTicket: function (projectId, ticketId, abortController) {
     let signal = null;
     if (abortController) signal = abortController.signal;
 
-    return fetch(`${process.env.REACT_APP_SERVERURL}/api/tickets/${projectId}/${ticketId}`, {
+    return fetch(`${process.env.REACT_APP_SERVER_URL}/api/tickets/${projectId}/${ticketId}`, {
       signal,
     }).then((res) => res.json());
   },
@@ -84,7 +84,7 @@ const API = {
     let signal = null;
     if (abortController) signal = abortController.signal;
 
-    return fetch(`${process.env.REACT_APP_SERVERURL}/api/comments/${ticketId}`, {
+    return fetch(`${process.env.REACT_APP_SERVER_URL}/api/comments/${ticketId}`, {
       signal,
       headers: {
         "Content-Type": "application/json",
@@ -96,12 +96,12 @@ const API = {
     let signal = null;
     if (abortController) signal = abortController.signal;
 
-    return fetch(`${process.env.REACT_APP_SERVERURL}/api/devAssignments/${ticketId}`, {
+    return fetch(`${process.env.REACT_APP_SERVER_URL}/api/devAssignments/${ticketId}`, {
       signal,
     }).then((res) => res.json());
   },
   createTicket: function (projectId, payload) {
-    return fetch(`${process.env.REACT_APP_SERVERURL}/api/tickets/${projectId}`, {
+    return fetch(`${process.env.REACT_APP_SERVER_URL}/api/tickets/${projectId}`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -111,7 +111,7 @@ const API = {
     }).then((res) => res.json());
   },
   updateTicket: function (projectId, ticketId, payload) {
-    return fetch(`${process.env.REACT_APP_SERVERURL}/api/tickets/${projectId}/${ticketId}`, {
+    return fetch(`${process.env.REACT_APP_SERVER_URL}/api/tickets/${projectId}/${ticketId}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -121,7 +121,7 @@ const API = {
     }).then((res) => res.json());
   },
   deleteTicket: function (projectId, ticketId) {
-    return fetch(`${process.env.REACT_APP_SERVERURL}/api/tickets/${projectId}/${ticketId}`, {
+    return fetch(`${process.env.REACT_APP_SERVER_URL}/api/tickets/${projectId}/${ticketId}`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
@@ -130,7 +130,7 @@ const API = {
     });
   },
   createDevAssignment: function (ticketId, devId) {
-    return fetch(`${process.env.REACT_APP_SERVERURL}/api/devAssignments/${ticketId}`, {
+    return fetch(`${process.env.REACT_APP_SERVER_URL}/api/devAssignments/${ticketId}`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -140,7 +140,7 @@ const API = {
     }).then((res) => res.json());
   },
   removeAllDevAssignments: function (ticketId) {
-    return fetch(`${process.env.REACT_APP_SERVERURL}/api/devAssignments/${ticketId}`, {
+    return fetch(`${process.env.REACT_APP_SERVER_URL}/api/devAssignments/${ticketId}`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
@@ -149,7 +149,7 @@ const API = {
     });
   },
   login: function (userInfo) {
-    return fetch(`${process.env.REACT_APP_SERVERURL}/api/auth/login`, {
+    return fetch(`${process.env.REACT_APP_SERVER_URL}/api/auth/login`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -162,12 +162,12 @@ const API = {
     let signal = null;
     if (abortController) signal = abortController.signal;
 
-    return fetch(`${process.env.REACT_APP_SERVERURL}/api/availableUsers/` + projectId, {
+    return fetch(`${process.env.REACT_APP_SERVER_URL}/api/availableUsers/` + projectId, {
       signal,
     }).then((res) => res.json());
   },
   addTeamMember: function (projectId, userId) {
-    return fetch(`${process.env.REACT_APP_SERVERURL}/api/userProjects/` + projectId, {
+    return fetch(`${process.env.REACT_APP_SERVER_URL}/api/userProjects/` + projectId, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -178,7 +178,7 @@ const API = {
   },
   removeTeamMember: function (projectId, userId) {
     return fetch(
-      `${process.env.REACT_APP_SERVERURL}/api/userProjects/${projectId}/${userId}`,
+      `${process.env.REACT_APP_SERVER_URL}/api/userProjects/${projectId}/${userId}`,
       {
         method: "DELETE",
         headers: {
@@ -189,7 +189,7 @@ const API = {
     );
   },
   removeAllTeamMembers: function (projectId) {
-    return fetch(`${process.env.REACT_APP_SERVERURL}/api/userProjects/${projectId}`, {
+    return fetch(`${process.env.REACT_APP_SERVER_URL}/api/userProjects/${projectId}`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
@@ -201,7 +201,7 @@ const API = {
     let signal = null;
     if (abortController) signal = abortController.signal;
 
-    return fetch(`${process.env.REACT_APP_SERVERURL}/api/users`, { signal }).then((res) =>
+    return fetch(`${process.env.REACT_APP_SERVER_URL}/api/users`, { signal }).then((res) =>
       res.json()
     );
   },
@@ -209,7 +209,7 @@ const API = {
     let signal = null;
     if (abortController) signal = abortController.signal;
 
-    return fetch(`${process.env.REACT_APP_SERVERURL}/api/users/0`, {
+    return fetch(`${process.env.REACT_APP_SERVER_URL}/api/users/0`, {
       signal,
       method: "GET",
       headers: {
@@ -219,7 +219,7 @@ const API = {
     }).then((res) => res.json());
   },
   updatePic: function (pic) {
-    return fetch(`${process.env.REACT_APP_SERVERURL}/api/users/0`, {
+    return fetch(`${process.env.REACT_APP_SERVER_URL}/api/users/0`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
@@ -229,7 +229,7 @@ const API = {
     }).then((res) => res.json());
   },
   lookupUserByEmail: function (email) {
-    return fetch(`${process.env.REACT_APP_SERVERURL}/api/auth/user/`, {
+    return fetch(`${process.env.REACT_APP_SERVER_URL}/api/auth/user/`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -238,7 +238,7 @@ const API = {
     }).then((res) => res.json());
   },
   deleteProject: function (projectId) {
-    return fetch(`${process.env.REACT_APP_SERVERURL}/api/projects/${projectId}`, {
+    return fetch(`${process.env.REACT_APP_SERVER_URL}/api/projects/${projectId}`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
@@ -247,7 +247,7 @@ const API = {
     });
   },
   register: function (userData) {
-    return fetch(`${process.env.REACT_APP_SERVERURL}/api/auth/register`, {
+    return fetch(`${process.env.REACT_APP_SERVER_URL}/api/auth/register`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -259,7 +259,7 @@ const API = {
     let signal = null;
     if (abortController) signal = abortController.signal;
 
-    return fetch(`${process.env.REACT_APP_SERVERURL}/api/tickets`, {
+    return fetch(`${process.env.REACT_APP_SERVER_URL}/api/tickets`, {
       signal,
       method: "GET",
       headers: {
@@ -269,7 +269,7 @@ const API = {
     });
   },
   createComment: function (ticketId, comment) {
-    return fetch(`${process.env.REACT_APP_SERVERURL}/api/comments/${ticketId}`, {
+    return fetch(`${process.env.REACT_APP_SERVER_URL}/api/comments/${ticketId}`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -280,7 +280,7 @@ const API = {
   },
   deleteComment: function (ticketId, commentId) {
     return fetch(
-      `${process.env.REACT_APP_SERVERURL}/api/comments/${ticketId}/${commentId}`,
+      `${process.env.REACT_APP_SERVER_URL}/api/comments/${ticketId}/${commentId}`,
       {
         method: "DELETE",
         headers: {
@@ -291,7 +291,7 @@ const API = {
     );
   },
   updateUser: function (userId, payload) {
-    return fetch(`${process.env.REACT_APP_SERVERURL}/api/users/${userId}`, {
+    return fetch(`${process.env.REACT_APP_SERVER_URL}/api/users/${userId}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",

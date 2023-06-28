@@ -20,7 +20,6 @@ const proConfig = {
   connectionString: process.env.DATABASE_URL, // Deployment Internal Database URL
   ssl: {
     rejectUnauthorized: false,
-    // ca: fs.readFileSync('/path/to/server-certificates/root.crt').toString(),
   },
 };
 

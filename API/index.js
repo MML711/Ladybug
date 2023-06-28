@@ -2,7 +2,7 @@ import express from "express";
 const app = express();
 
 import routes from "./routes/index.js";
-import path from "path";
+// import path from "path";
 import cors from "cors";
 import dotenv from "dotenv";
 dotenv.config();
@@ -12,10 +12,8 @@ const PORT = process.env.PORT || 4001;
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
-// https://cors-anywhere.herokuapp.com/
-
 app.use((req, res, next) => {
-  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Origin", `${process.env.CLIENT_URL}`);
   res.header(
     "Access-Control-Allow-Headers",
     "Origin, X-Requested-With, Content-Type, Accept, Authorization, token"
@@ -27,7 +25,7 @@ app.use((req, res, next) => {
 //middleware to handle any CORS issues
 app.use(
   cors({
-    origin: "*",
+    origin: `${process.env.CLIENT_URL}`,
     methods: `POST,GET,PUT,DELETE,PATCH,OPTIONS`,
     allowedHeaders: `Origin,X-Requested-With,Content-Type,Accept,Authorization,token`,
   })

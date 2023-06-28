@@ -9,9 +9,6 @@ const App = () => {
 
   let token = localStorage.getItem("token");
 
-  console.log(process.env.REACT_APP_SERVERURL);
-  console.log(typeof process.env.REACT_APP_SERVERURL);
-
   const storedExpirationDate = localStorage.getItem("expiration");
   const expirationDate = new Date(storedExpirationDate);
   const now = new Date();
@@ -21,8 +18,6 @@ const App = () => {
     if (token == null) {
       setIsAuthenticated(false);
     }
-
-    console.log(duration);
 
     setTimeout(() => {
       localStorage.removeItem("token");
@@ -36,8 +31,6 @@ const App = () => {
   const setAuth = (boolean) => {
     setIsAuthenticated(boolean);
   };
-
-  console.log(token);
 
   return (
     <BrowserRouter>
